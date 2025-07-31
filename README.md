@@ -1,16 +1,51 @@
-# shop_app
+# 🛍️ Shopify - Flutter E-Commerce App
 
-A new Flutter project.
+Shopify is a modern, clean, and fully responsive Flutter e-commerce app. It includes categories like Footwear, Accessories, Appliances, and more. Designed to be scalable and easy to integrate with Firebase backend and Node.js server.
 
-## Getting Started
+---
 
-This project is a starting point for a Flutter application.
+## 📱 Features
 
-A few resources to get you started if this is your first Flutter project:
+- 🏷️ Product Categories (Clothing, Footwear, Accessories, Appliances, etc.)
+- 🛒 Cart functionality
+- 🔍 Product Search
+- 📦 Product Details with Size Variants
+- 🌐 Firebase Firestore Integration (Coming Soon)
+- ☁️ Firebase Storage for Images (Coming Soon)
+- 🧠 Provider State Management
+- ✨ Clean and modular code structure
 
-- [Lab: Write your first Flutter app](https://docs.flutter.dev/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://docs.flutter.dev/cookbook)
+---
 
-For help getting started with Flutter development, view the
-[online documentation](https://docs.flutter.dev/), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+## 📁 Folder Structure
+
+lib/
+├── main.dart
+├── models/ # Product models, user models
+├── providers/ # State management (e.g. CartProvider, ProductProvider)
+├── screens/ # UI screens (Home, Cart, Product Details, etc.)
+├── services/ # API calls, Firebase logic
+├── widgets/ # Reusable UI components
+assets/
+├── categories/ # All category images
+└── icons/ # Category icons
+
+## 📸 Screenshots
+
+### 🏠 Home Page
+
+![Home Page](assets/screenshots/home_page.png)
+
+🛠️ Coming Soon
+Firebase Firestore backend integration
+
+Firebase Storage for image hosting
+
+Node.js backend for admin operations
+
+User login & signup
+
+Wishlist & Orders tab
+
+👨‍💻 Author
+Your Name – @[yourGitHub](https://github.com/Manish-Patel97/)
