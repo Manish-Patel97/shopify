@@ -33,8 +33,14 @@ assets/
 ## 📸 Screenshots
 
 ### 🏠 Home Page
-
 ![Home Page](assets/screenshots/home_page.png)
+
+### 🛒 Cart Page
+![Cart Page](assets/screenshots/cart_page.png)
+
+### 📄 Product Details Page
+![Product Details Page](assets/screenshots/product_details_page.png)
+
 
 🛠️ Coming Soon
 Firebase Firestore backend integration
