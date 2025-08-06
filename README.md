@@ -54,7 +54,7 @@ lib/
 <div align="center">
   <img src="assets/screenshots/home_page.png" alt="Home Page" width="200"/>
   <img src="assets/screenshots/cart_page.png" alt="Cart Page" width="200"/>
-  <img src="assets/screenshots/product_Details_page.png" alt="Product Details Page" width="200"/>
+  <img src="assets/screenshots/productDetails_page.png" alt="Product Details Page" width="200"/>
 </div>
 
 ---
