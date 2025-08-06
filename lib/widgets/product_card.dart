@@ -17,7 +17,6 @@ class ProductCard extends StatelessWidget {
     return Container(
       margin: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
       padding: const EdgeInsets.all(10),
-      
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
@@ -39,9 +38,13 @@ class ProductCard extends StatelessWidget {
           Text("₹ $price",
           style: Theme.of(context).textTheme.bodyMedium),
           const SizedBox(height: 5),
-          Center(
-            child: Image(image: AssetImage(imageUrl),
-            height: MediaQuery.of(context).size.height * 0.14,
+          Expanded(
+            child: Center(
+              child: Image(
+                image: AssetImage(imageUrl),
+                fit: BoxFit.contain,
+                          
+              ),
             ),
           ),
         ],

@@ -174,7 +174,6 @@ final List<String> filterIcons = const [
               itemCount: filteredProducts.length,
               itemBuilder: (context, index){
                 final product = filteredProducts[index];
-                print("Details of the product: $product");
                 return GestureDetector(
                   onTap: () {
                     Navigator.push(context, MaterialPageRoute(builder: (context){

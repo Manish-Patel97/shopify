@@ -3,11 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/firebase_options.dart';
 import 'package:shop_app/providers/cart_provider.dart';
-import 'package:shop_app/screens/home_page.dart';
+import 'package:shop_app/screens/login_screens.dart/auth_wrapper.dart';
+import 'package:shop_app/screens/login_screens.dart/emaillogin_page.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();
-  
   await Firebase.initializeApp(options:DefaultFirebaseOptions.currentPlatform);
   runApp(MyApp());
 }
@@ -37,31 +37,38 @@ class MyApp extends StatelessWidget {
         inputDecorationTheme: InputDecorationTheme(
           hintStyle: TextStyle(
           fontSize: 16,
-          fontWeight: FontWeight.bold
           ),
         ),
         
         textTheme: TextTheme(
          titleLarge: TextStyle(
-                  fontSize: 32,
-                  fontWeight: FontWeight.bold 
-                  ),
+           fontSize: 32,
+            fontWeight: FontWeight.bold 
+          ),
           titleMedium: TextStyle(
-            fontSize: 20,
+            fontSize: 24,
             fontWeight: FontWeight.bold,
           ),
          titleSmall: TextStyle(
             fontSize: 16,
             fontWeight: FontWeight.w600 
          ),
+          bodyLarge: TextStyle(
+            fontSize: 30,
+            fontWeight: FontWeight.w500,
+          ),
+          bodyMedium: TextStyle(
+            fontSize: 24,
+            fontWeight: FontWeight.w500,
+          ),
           bodySmall: TextStyle(
-            fontSize: 18,
+            fontSize: 16,
             fontWeight: FontWeight.w500,
           ),
          ),
         ),
         title: 'Shoes Mart',
-        home: HomePage(),
+        home: AuthWrapper(),
         debugShowCheckedModeBanner: false,
       ),
     );
