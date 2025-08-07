@@ -1,7 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:shop_app/screens/login_screens.dart/createaccount_page.dart';
-import 'package:shop_app/screens/login_screens.dart/mobilelogin_page.dart';
 import 'package:shop_app/services/firebase_auth_methods.dart';
 import 'package:shop_app/widgets/login_controller.dart';
 

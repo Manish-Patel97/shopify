@@ -4,7 +4,6 @@ import 'package:provider/provider.dart';
 import 'package:shop_app/firebase_options.dart';
 import 'package:shop_app/providers/cart_provider.dart';
 import 'package:shop_app/screens/login_screens.dart/auth_wrapper.dart';
-import 'package:shop_app/screens/login_screens.dart/emaillogin_page.dart';
 
 void main() async{
   WidgetsFlutterBinding.ensureInitialized();

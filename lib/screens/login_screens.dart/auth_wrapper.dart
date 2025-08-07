@@ -4,6 +4,8 @@ import 'package:shop_app/screens/home_page.dart';
 import 'package:shop_app/screens/login_screens.dart/emaillogin_page.dart';
 
 class AuthWrapper extends StatelessWidget {
+  const AuthWrapper({super.key});
+
   @override
   Widget build(BuildContext context) {
     return StreamBuilder<User?>(
