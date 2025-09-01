@@ -35,7 +35,7 @@ void pressedAddToCart(){
   SnackBar(
     content: Text('Item added to cart'),
     backgroundColor: Colors.blue.shade500,
-    duration: Duration(seconds: 4),
+    duration: Duration(seconds: 2),
     behavior: SnackBarBehavior.floating,
     shape: RoundedRectangleBorder(
       borderRadius: BorderRadius.circular(10),

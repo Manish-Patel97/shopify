@@ -1,7 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:shop_app/screens/login_screens.dart/emaillogin_page.dart';
 
-class AccountPage extends StatelessWidget {
+class AccountPage extends StatefulWidget {
   const AccountPage({super.key});
+
+  @override
+  State<AccountPage> createState() => _AccountPageState();
+}
+
+class _AccountPageState extends State<AccountPage> {
+  final user = FirebaseAuth.instance.currentUser;
+
+   
+
+  @override
+  void initState() {
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -13,7 +29,7 @@ class AccountPage extends StatelessWidget {
         children: [
           Container(
             width: double.infinity,
-            height: size.height * 0.2,
+            height: size.height * 0.25,
             decoration: BoxDecoration(
               gradient: const LinearGradient(
                 begin: Alignment.topLeft,
@@ -47,13 +63,13 @@ class AccountPage extends StatelessWidget {
                   crossAxisAlignment: CrossAxisAlignment.start,
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    Text('Manish Kumar',
+                    Text(user!.displayName ?? "No name",
                         style: Theme.of(context)
                             .textTheme
                             .titleMedium
                             ?.copyWith(color: Colors.white)),
                     const SizedBox(height: 4),
-                    Text('manish@gmail.com',
+                    Text(user!.email ?? "No email",
                         style: Theme.of(context)
                             .textTheme
                             .titleSmall
@@ -64,7 +80,6 @@ class AccountPage extends StatelessWidget {
             ),
           ),
       
-          // 🧾 Options Section
           Expanded(
             child: ListView(
               padding: const EdgeInsets.all(16),
@@ -93,6 +108,9 @@ class AccountPage extends StatelessWidget {
                   context,
                   icon: Icons.logout,
                   label: 'Logout',
+                  onTap: (){
+                    _showLogoutDialog(context);
+                  }
                 ),
               ],
             ),
@@ -102,8 +120,14 @@ class AccountPage extends StatelessWidget {
     );
   }
 
+
+
   Widget _buildOptionTile(BuildContext context,
-      {required IconData icon, required String label}) {
+      {
+        required IconData icon, 
+        required String label,
+        VoidCallback? onTap,
+        }) {
     return Card(
       elevation: 1,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
@@ -112,7 +136,45 @@ class AccountPage extends StatelessWidget {
         leading: Icon(icon, size: 28, color: Colors.blueAccent),
         title: Text(label, style: Theme.of(context).textTheme.bodySmall),
         trailing: const Icon(Icons.arrow_forward_ios, size: 16),
-        onTap: () {},
+        onTap: onTap,
+      ),
+    );
+  }
+
+    // Logout Confirmation Dialog
+  void _showLogoutDialog(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => AlertDialog(
+        title: Text("Confirm Logout",
+        style: Theme.of(context).textTheme.titleMedium
+        ),
+        content:Text("Are you sure you want to log out?",
+        style: Theme.of(context).textTheme.bodySmall
+        ),
+        actions: [
+          TextButton(
+            onPressed: () => Navigator.pop(context),
+            child:Text("Cancel",
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Colors.green)
+            ),
+          ),
+          TextButton(
+            onPressed: () async {
+              Navigator.pop(context);
+              await FirebaseAuth.instance.signOut();
+              if (context.mounted) {
+                Navigator.pushReplacement(
+                  context,
+                  MaterialPageRoute(builder: (_) => EmailloginPage()),
+                );
+              }
+            },
+            child:Text("Logout",
+            style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Colors.red)
+            ),
+          ),
+        ],
       ),
     );
   }

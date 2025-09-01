@@ -10,6 +10,7 @@ class FirebaseAuthMethods {
 
  //EMAIL SIGN UP
  Future<void> signUpWithEmail({
+  required String name,
   required String email,
   required String password,
   required BuildContext context,
@@ -19,6 +20,9 @@ class FirebaseAuthMethods {
       email: email, 
       password: password,
       );
+    
+    // update display name
+    await _auth.currentUser!.updateDisplayName(name);
 
     // Show success message
     if (context.mounted) {
@@ -68,6 +72,28 @@ class FirebaseAuthMethods {
       showSnackBar(context, "Logged in successfully!");
       Navigator.pushReplacement(context,
             MaterialPageRoute(builder: (_) => HomePage()));
+    }
+  }on FirebaseAuthException catch (e) {
+    if (context.mounted) {
+    showSnackBar(context, e.message ?? "Something went wrong");
+      }
+    }
+ }
+
+   //EMAIL LOGOUT
+ Future<void> logOutEmail({
+  required String email,
+  required String password,
+  required BuildContext context,
+ })async{
+  try{
+    await _auth.signOut();
+
+    // Show success message
+    if (context.mounted) {
+      showSnackBar(context, "Logged out successfully!");
+      Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: (_) => EmailloginPage()));
     }
   }on FirebaseAuthException catch (e) {
     if (context.mounted) {

@@ -1,7 +1,7 @@
-import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shop_app/providers/cart_provider.dart';
+import 'package:shop_app/screens/payment_page.dart';
 
 class CartPage extends StatelessWidget {
   const CartPage({super.key});
@@ -71,18 +71,19 @@ class CartPage extends StatelessWidget {
                         context: context, 
                         builder: (context){
                           return AlertDialog(
-                        title: Text('Remove Item'),
-                        content: Text('Are you sure you want to remove this item from the cart?'),
+                        title: Text('Remove Item',
+                        style: Theme.of(context).textTheme.titleMedium
+                        ),
+                        content: Text('Are you sure you want to remove?',
+                        style: Theme.of(context).textTheme.bodySmall
+                        ),
                         actions: [
                           TextButton(
                             onPressed: () {
                               Navigator.of(context).pop();
                             },
                             child: Text('Cancel',
-                            style: TextStyle(
-                              color: Colors.green,
-                              fontWeight: FontWeight.bold,
-                            )
+                            style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Colors.green)
                             ),
                           ),
                           TextButton(
@@ -91,10 +92,7 @@ class CartPage extends StatelessWidget {
                               Navigator.of(context).pop();
                             },
                             child: Text('Remove',
-                            style: TextStyle(
-                              color: Colors.red,
-                              fontWeight: FontWeight.bold,
-                            )
+                            style: Theme.of(context).textTheme.titleSmall?.copyWith(color: Colors.red)
                             ),
                           ),
                         ],
@@ -109,7 +107,7 @@ class CartPage extends StatelessWidget {
                          ),
                         SizedBox(width: 6),
                         Text('Remove', 
-                        style: Theme.of(context).textTheme.bodySmall
+                        style: Theme.of(context).textTheme.bodyMedium
                           ),
                       ],
                     ),
@@ -126,9 +124,11 @@ class CartPage extends StatelessWidget {
                   InkWell(
                     splashColor: Colors.grey.withAlpha(160),
                     onTap: () {
-                    if(kDebugMode){
-                      print("purchse now");
-                    }
+                    Navigator.push(context,
+                      MaterialPageRoute(builder: (context) {
+                                return PaymentPage();
+                      }),
+                     );
                       
                     },
                     child: Row(
@@ -139,7 +139,7 @@ class CartPage extends StatelessWidget {
                         ),
                         SizedBox(width: 6),
                         Text('Buy this now',
-                         style: Theme.of(context).textTheme.bodySmall
+                         style: Theme.of(context).textTheme.bodyMedium
                          ),
                       ],
                     ),
